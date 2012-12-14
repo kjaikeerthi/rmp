@@ -11,7 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121214105534) do
+ActiveRecord::Schema.define(:version => 20121214113757) do
+
+  create_table "availabilities", :force => true do |t|
+    t.integer  "food_id"
+    t.integer  "quantity"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+    t.integer  "current_availabilities"
+    t.datetime "current_day"
+  end
+
+  add_index "availabilities", ["food_id"], :name => "index_availabilities_on_food_id"
+
+  create_table "foods", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.float    "price"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
