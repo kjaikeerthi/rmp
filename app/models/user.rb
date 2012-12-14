@@ -10,4 +10,16 @@ class User < ActiveRecord::Base
 
   validate :role, inclusion: ["user", "admin", "owner"]
   # attr_accessible :title, :body
+
+  def user?
+    self.role == "user"
+  end
+
+  def admin?
+    self.role == "admin"
+  end
+
+  def owner?
+    self.role == "owner"
+  end
 end
